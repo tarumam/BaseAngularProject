@@ -6,6 +6,7 @@ import { Observable, fromEvent, merge } from 'rxjs';
 
 import { GenericValidator } from './../../utils/generic-form-validator.';
 import { CustomValidators } from 'ng2-validation';
+import { ToastrService } from 'ngx-toastr';
 
 import { Organizador } from '../models/organizador';
 import { OrganizadorService } from './../../services/organizador.service';
@@ -24,7 +25,10 @@ export class InscricaoComponent implements OnInit, AfterViewInit {
   genericValidator: GenericValidator;
   public errors: any[] = [];
 
-  constructor(private fb: FormBuilder, private organizadorService: OrganizadorService, private router: Router) {
+  constructor(private fb: FormBuilder,
+    private organizadorService: OrganizadorService,
+    private router: Router,
+    private toastr: ToastrService) {
 
     this.validationMessages = {
       nome: {
@@ -100,11 +104,15 @@ export class InscricaoComponent implements OnInit, AfterViewInit {
     localStorage.setItem('base-project.token', response.access_token);
     localStorage.setItem('base-project.user', JSON.stringify(response.user));
 
-    this.router.navigate(['/home']);
+    const toastrMessage = this.toastr.success('Usuário registrado.', 'Sucesso');
 
+    if (toastrMessage) {
+      toastrMessage.onHidden.subscribe(() => this.router.navigate(['/home']))
+    }
   }
 
   onError(fail: any) {
+    this.toastr.error('Ocorreram erros durante a operação.', 'Ops!');
     this.errors = fail.error.errors;
   }
 }

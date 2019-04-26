@@ -30,7 +30,6 @@ export class MenuLoginComponent {
   }
 
   logout() {
-    
     localStorage.removeItem('base-project.token');
     localStorage.removeItem('base-project.user');
     this.router.navigateByUrl('/');
