@@ -1,0 +1,17 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" [routerLink]="['/']">BaseProject</a>
+    <button class="navbar-toggler" (click)="isCollapsed= !isCollapsed" type="button" data-toggle="collapse"
+      data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [collapse]="isCollapsed" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a [routerLink]="['/proximos-eventos']" class="nav-link" href="#">Eventos <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <app-menu-login></app-menu-login>
+    </div>
+  </nav>
+</header>

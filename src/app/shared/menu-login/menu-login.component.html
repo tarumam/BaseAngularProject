@@ -1,0 +1,10 @@
+<ul [ngSwitch]='usuarioLogado()' class="navbar-nav mr-auto navbar-right">
+
+  <li *ngSwitchCase="false" class="nav-item"><a [routerLink]="['/inscricao']" class="nav-link">Registre-se</a></li>
+  <li *ngSwitchCase="false" class="nav-item"><a [routerLink]="['/entrar']" class="nav-link">Entrar</a></li>
+
+  <li *ngSwitchCase="true" class="nav-item"><a href="javascript:void(0)" class="nav-link">Olá {{nome}}</a></li>
+  <li *ngSwitchCase="true" class="nav-item"><a href="javascript:void(0)" (click)="logout()" class="nav-link">
+      <span class="glyphicon glyphicon-off"></span>Sair</a>
+  </li>
+</ul>
