@@ -15,10 +15,20 @@ export class OrganizadorService extends ServiceBase {
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError)
-            )
+            );
     }
 
+    login(organizador: Organizador): Observable<Organizador> {
 
+        const response = this.http
+            .post(this.urlServiceV1 + 'conta', organizador, super.ObterHeaderJson())
+            .pipe(
+                map(super.extractData),
+                catchError(super.serviceError)
+            );
+
+        return response;
+    }
 }
 
 

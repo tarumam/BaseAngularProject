@@ -26,9 +26,9 @@ export class InscricaoComponent implements OnInit, AfterViewInit {
   public errors: any[] = [];
 
   constructor(private fb: FormBuilder,
-    private organizadorService: OrganizadorService,
-    private router: Router,
-    private toastr: ToastrService) {
+              private organizadorService: OrganizadorService,
+              private router: Router,
+              private toastr: ToastrService) {
 
     this.validationMessages = {
       nome: {
@@ -75,7 +75,7 @@ export class InscricaoComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    let controlBlurs: Observable<any>[] = this.formInputElements
+    const controlBlurs: Observable<any>[] = this.formInputElements
       .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
 
     merge(...controlBlurs).subscribe(value => {
@@ -107,7 +107,7 @@ export class InscricaoComponent implements OnInit, AfterViewInit {
     const toastrMessage = this.toastr.success('Usuário registrado.', 'Sucesso');
 
     if (toastrMessage) {
-      toastrMessage.onHidden.subscribe(() => this.router.navigate(['/home']))
+      toastrMessage.onHidden.subscribe(() => this.router.navigate(['/home']));
     }
   }
 

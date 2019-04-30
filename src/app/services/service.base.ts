@@ -15,6 +15,23 @@ export abstract class ServiceBase {
         };
     }
 
+    protected ObterAuthHeaderJson() {
+        return {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${this.obterTokenUsuario()}`
+            })
+        };
+    }
+
+    protected obterTokenUsuario(): string {
+        return localStorage.getItem('base-project.token');
+    }
+
+    public obterUsuario() {
+        return JSON.parse(localStorage.getItem('base-project.user'));
+    }
+
     protected extractData(response: any) {
         return response.data || {};
     }

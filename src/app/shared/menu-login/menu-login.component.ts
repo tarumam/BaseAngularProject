@@ -10,7 +10,7 @@ export class MenuLoginComponent {
 
   public token;
   public user;
-  public nome: string = "";
+  public nome = '';
 
   constructor(private router: Router) {
     this.token = localStorage.getItem('eio.token');
