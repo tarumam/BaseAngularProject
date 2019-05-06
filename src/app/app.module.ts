@@ -1,6 +1,6 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,10 +10,11 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 registerLocaleData(localePt);
 
-// Bootstrap
+// External components
 import { CollapseModule } from 'ng2-bootstrap/collapse';
 import { CarouselModule } from 'ng2-bootstrap/carousel';
 import { ToastrModule } from 'ngx-toastr';
+import { MyDatePickerModule } from 'mydatepicker';
 
 // Shared components
 import { MenuSuperiorComponent } from './shared/menu-superior/menu-superior.component';
@@ -42,6 +43,10 @@ import { AuthService } from './services/authService';
 import { ErrorInterceptor } from './services/ErrorInterceptor';
 import { EventoService } from './services/evento.service';
 import { NaoEncontradoComponent } from './shared/nao-encontrado/nao-encontrado.component';
+import { EditarEventoComponent } from './eventos/editar-evento/editar-evento.component';
+import { MeusEventosComponent } from './eventos/meus-eventos/meus-eventos.component';
+import { ExcluirEventoComponent } from './eventos/excluir-evento/excluir-evento.component';
+import { DetalhesEventoComponent } from './eventos/detalhes-evento/detalhes-evento.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +61,11 @@ import { NaoEncontradoComponent } from './shared/nao-encontrado/nao-encontrado.c
     LoginComponent,
     AdicionarEventoComponent,
     AcessoNegadoComponent,
-    NaoEncontradoComponent
+    NaoEncontradoComponent,
+    EditarEventoComponent,
+    MeusEventosComponent,
+    ExcluirEventoComponent,
+    DetalhesEventoComponent
   ],
   imports: [
     BrowserModule,
@@ -65,9 +74,11 @@ import { NaoEncontradoComponent } from './shared/nao-encontrado/nao-encontrado.c
     CarouselModule.forRoot(),
     ReactiveFormsModule,
     CustomFormsModule,
+    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MyDatePickerModule
   ],
   providers: [
     Title,

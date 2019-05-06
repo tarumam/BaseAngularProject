@@ -30,5 +30,4 @@ export class ListaEventosComponent implements OnInit {
         error => this.errorMessage = error
       );
   }
-
 }

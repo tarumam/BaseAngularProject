@@ -5,11 +5,16 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './menu-superior.component.html',
   styleUrls: ['./menu-superior.component.css']
 })
-export class MenuSuperiorComponent implements OnInit {
+export class MenuSuperiorComponent {
 
-  constructor() { }
+  private token: string;
+  isCollapsed = false;
 
-  ngOnInit() {
+  usuarioLogado(): boolean {
+    this.token = localStorage.getItem('base-project.token');
+    if (!this.token) {
+      return false;
+    }
+    return true;
   }
-
 }

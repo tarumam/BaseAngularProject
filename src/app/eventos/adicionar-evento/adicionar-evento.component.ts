@@ -3,12 +3,14 @@ import { FormGroup, FormBuilder, Validators, FormControlName, FormControl } from
 import { Router } from '@angular/router';
 
 import { Observable, fromEvent, merge } from 'rxjs';
-
-import { GenericValidator } from './../../utils/generic-form-validator.';
 import { ToastrService } from 'ngx-toastr';
 
+import { IMyOptions, IMyDateModel } from 'mydatepicker';
+
 import { Evento, Categoria, Endereco } from '../models/evento';
+import { GenericValidator } from './../../utils/generic-form-validator.';
 import { EventoService } from 'src/app/services/evento.service';
+import { DateUtils } from './../../utils/data-type-utils';
 
 
 @Component({
@@ -17,6 +19,8 @@ import { EventoService } from 'src/app/services/evento.service';
 })
 export class AdicionarEventoComponent implements OnInit, AfterViewInit {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
+
+  public myDatePickerOptions = DateUtils.getMyDatePickerOptions();
 
   public eventoForm: FormGroup;
   public errors: any[] = [];
@@ -97,15 +101,13 @@ export class AdicionarEventoComponent implements OnInit, AfterViewInit {
 
   adicionarEvento() {
     if (this.eventoForm.dirty && this.eventoForm.valid) {
+      const p = Object.assign({}, this.evento, this.eventoForm.value);
+
       const user = this.eventoService.obterUsuario();
-
-      let p = Object.assign({}, this.evento, this.eventoForm.value);
-      p.organizadorId = user.id;
-
       // p.valor = CurrencyUtils.ToDecimal(p.valor);
-
-      // p.dataInicio = DateUtils.getMyDatePickerDate(p.dataInicio);
-      // p.dataFim = DateUtils.getMyDatePickerDate(p.dataFim);
+      p.dataInicio = DateUtils.getMyDatePickerDate(p.dataInicio);
+      p.dataFim = DateUtils.getMyDatePickerDate(p.dataFim);
+      p.organizadorId = user.id;
       p.endereco.logradouro = p.logradouro;
       p.endereco.numero = p.numero;
       p.endereco.complemento = p.complemento;
@@ -137,8 +139,7 @@ export class AdicionarEventoComponent implements OnInit, AfterViewInit {
     if (toastrMessage) {
       toastrMessage.onHidden.subscribe(() => {
         this.router.navigate(['/proximos-eventos']);
-      })
+      });
     }
   }
-
 }
