@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Evento } from '../models/evento';
 import { ToastrService } from 'ngx-toastr';
-import { EventoService } from 'src/app/services/evento.service';
+import { EventoService } from 'src/app/eventos/services/evento.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControlName } from '@angular/forms';
 
@@ -37,7 +37,7 @@ export class ExcluirEventoComponent implements OnInit {
           this.evento = evento;
           this.isDataAvailable = true;
         }
-      )
+      );
   }
 
   public excluirEvento() {
@@ -52,7 +52,7 @@ export class ExcluirEventoComponent implements OnInit {
     const toast = this.toastr.success('Evento excluído com sucesso!', 'Good bye =)');
     if (toast) {
       toast.onHidden.subscribe(() => {
-        this.router.navigate(['/meus-eventos']);
+        this.router.navigate(['/eventos/meus-eventos']);
       });
     }
   }

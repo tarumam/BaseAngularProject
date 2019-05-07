@@ -8,10 +8,10 @@
     <div class="collapse navbar-collapse" [collapse]="isCollapsed" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a [routerLink]="['/proximos-eventos']" class="nav-link" href="#">Eventos <span class="sr-only"></span></a>
+          <a [routerLink]="['/eventos/lista-eventos']" class="nav-link" href="#">Eventos <span class="sr-only"></span></a>
         </li>
         <li class="nav-item active">
-            <a *ngIf='usuarioLogado()' [routerLink]="['/meus-eventos']" class="nav-link" href="#">Meus Eventos <span class="sr-only"></span></a>
+            <a *ngIf='usuarioLogado()' [routerLink]="['/eventos/meus-eventos']" class="nav-link" href="#">Meus Eventos <span class="sr-only"></span></a>
           </li>
       </ul>
       <app-menu-login></app-menu-login>

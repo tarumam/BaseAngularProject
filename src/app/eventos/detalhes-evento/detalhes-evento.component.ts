@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Evento } from './../models/evento';
-import { EventoService } from 'src/app/services/evento.service';
+import { EventoService } from 'src/app/eventos/services/evento.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 

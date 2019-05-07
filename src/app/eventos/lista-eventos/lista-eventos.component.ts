@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SeoService, SeoModel } from './../../services/seo.service';
-import { EventoService } from 'src/app/services/evento.service';
+import { EventoService } from 'src/app/eventos/services/evento.service';
 import { Evento } from './../models/evento';
 
 @Component({

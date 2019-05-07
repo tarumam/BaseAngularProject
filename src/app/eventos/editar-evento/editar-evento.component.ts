@@ -9,7 +9,7 @@ import { IMyOptions, IMyDateModel } from 'mydatepicker';
 
 import { Evento, Categoria, Endereco } from '../models/evento';
 import { GenericValidator } from './../../utils/generic-form-validator.';
-import { EventoService } from 'src/app/services/evento.service';
+import { EventoService } from 'src/app/eventos/services/evento.service';
 import { DateUtils } from './../../utils/data-type-utils';
 import { CurrencyUtils } from './../../utils/currency-utils';
 

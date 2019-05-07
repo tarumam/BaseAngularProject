@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-import { ServiceBase } from './service.base';
-import { Categoria, Evento, Endereco } from './../eventos/models/evento';
+import { ServiceBase } from '../../services/service.base';
+import { Categoria, Evento, Endereco } from '../models/evento';
 
 @Injectable()
 export class EventoService extends ServiceBase {
@@ -78,7 +78,7 @@ export class EventoService extends ServiceBase {
                 map(super.extractData),
                 catchError((super.serviceError)));
         return response;
-    };
+    }
 
     atualizarEndereco(endereco: Endereco): Observable<Endereco> {
         const response = this.http
@@ -86,6 +86,6 @@ export class EventoService extends ServiceBase {
                 map(super.extractData),
                 catchError((super.serviceError)));
         return response;
-    };
+    }
 }
 

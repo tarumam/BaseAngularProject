@@ -11,66 +11,37 @@ import localePt from '@angular/common/locales/pt';
 registerLocaleData(localePt);
 
 // External components
-import { CollapseModule } from 'ng2-bootstrap/collapse';
-import { CarouselModule } from 'ng2-bootstrap/carousel';
+import { CustomFormsModule } from 'ng2-validation';
 import { ToastrModule } from 'ngx-toastr';
-import { MyDatePickerModule } from 'mydatepicker';
 
-// Shared components
-import { MenuSuperiorComponent } from './shared/menu-superior/menu-superior.component';
-import { MainPrincipalComponent } from './shared/main-principal/main-principal.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { MenuLoginComponent } from './shared/menu-login/menu-login.component';
+// Bootstrap
+import { CarouselModule } from 'ng2-bootstrap/carousel';
 
 // Common components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
-// Eventos Components
-import { ListaEventosComponent } from './eventos/lista-eventos/lista-eventos.component';
-import { AdicionarEventoComponent } from './eventos/adicionar-evento/adicionar-evento.component';
+import { SharedModule } from './shared/shared.module';
 
 // Organizador Components
 import { InscricaoComponent } from './usuario/inscricao/inscricao.component';
 import { LoginComponent } from './usuario/login/login.component';
-import { AcessoNegadoComponent } from './shared/acesso-negado/acesso-negado.component';
 
 // Services
 import { SeoService } from './services/seo.service';
-import { CustomFormsModule } from 'ng2-validation';
 import { OrganizadorService } from './services/organizador.service';
-import { AuthService } from './services/authService';
 import { ErrorInterceptor } from './services/ErrorInterceptor';
-import { EventoService } from './services/evento.service';
-import { NaoEncontradoComponent } from './shared/nao-encontrado/nao-encontrado.component';
-import { EditarEventoComponent } from './eventos/editar-evento/editar-evento.component';
-import { MeusEventosComponent } from './eventos/meus-eventos/meus-eventos.component';
-import { ExcluirEventoComponent } from './eventos/excluir-evento/excluir-evento.component';
-import { DetalhesEventoComponent } from './eventos/detalhes-evento/detalhes-evento.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuSuperiorComponent,
-    MainPrincipalComponent,
-    FooterComponent,
     HomeComponent,
-    MenuLoginComponent,
-    ListaEventosComponent,
     InscricaoComponent,
     LoginComponent,
-    AdicionarEventoComponent,
-    AcessoNegadoComponent,
-    NaoEncontradoComponent,
-    EditarEventoComponent,
-    MeusEventosComponent,
-    ExcluirEventoComponent,
-    DetalhesEventoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CollapseModule.forRoot(),
     CarouselModule.forRoot(),
     ReactiveFormsModule,
     CustomFormsModule,
@@ -78,14 +49,12 @@ import { DetalhesEventoComponent } from './eventos/detalhes-evento/detalhes-even
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    MyDatePickerModule
+    SharedModule
   ],
   providers: [
     Title,
     SeoService,
     OrganizadorService,
-    AuthService,
-    EventoService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
